@@ -1,0 +1,33 @@
+.content-inicio {
+  --ion-background-color: #c0c0c0;
+}
+ion-header {
+  --ion-text-color: #ffffff;
+}
+
+ion-content {
+  --ion-text-color: #000000;
+}
+
+.login-logo{
+  width: 50px;
+  vertical-align:auto;
+  margin-left: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.login-name{
+  width: 100px;
+  margin-left: 5px;
+  vertical-align:auto;
+  margin-bottom:8px;
+}
+.boton-extra {
+  display: none;
+}
+.cerrar-sesion{
+  --ion-color-primary: #7B5BF2; /* Cambia el color principal del botón */
+  --ion-border-radius: 5px; /* Cambia el radio de los bordes */
+  padding: 8px 15px;
+  width: auto;
+}

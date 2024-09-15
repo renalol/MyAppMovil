@@ -1,0 +1,9 @@
+@import './variables.scss';
+
+ion-content {
+    --background: transparent; // Para que no interfiera con la imagen
+  
+    background-image: url("/assets/imgs/fondo.jpg");
+    background-size: cover;
+    background-position: center;
+  }
