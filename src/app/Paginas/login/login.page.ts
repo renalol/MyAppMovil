@@ -29,10 +29,12 @@ export class LoginPage {
     } else {
       this.router.navigate(['/inicio'], { queryParams: { usuario: this.usuario } }); 
     }
+    const storedUser = localStorage.getItem('usuario');
+    const storedPassword = localStorage.getItem('contrasena');
   }
 
   async navigateToReset() {
-    this.router.navigate(['/reset-password']);
+    this.router.navigate(['/reset']);
   }
   ngAfterViewInit() {
     this.animacionTexto();

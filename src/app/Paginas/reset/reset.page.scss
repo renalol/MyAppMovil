@@ -1,0 +1,48 @@
+.content-reset{
+    --ion-background-color: #c0c0c0;
+    display: flex;
+}
+.reset-title {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 35px;
+    color: #333;
+  }
+ion-button {
+    --border-radius: 5px;
+    --padding-start: 20px;
+    --padding-end: 20px;
+    max-width: 250px;
+    margin: 0 auto;
+  }
+.boton-reset{
+    color: white;
+    padding: 15px 30px;
+    border-radius: 5px;
+    display: block;
+    margin: 0 auto;
+    font-size: 1.2rem;
+    
+}
+.header-reset{
+    background-color: black;
+}
+
+.reset-item {
+    max-width: 300px;
+    margin:40px 20px 15px 30px;
+}
+
+ion-item {
+    --padding-start: 16px;
+    --padding-end: 16px;
+    --border-radius: 5px;
+}
+
+.footer{
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+  }
