@@ -3,10 +3,6 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
-  },
-  {
     path: '',
     redirectTo: 'login',
     pathMatch: 'full'
@@ -22,6 +18,14 @@ const routes: Routes = [
   {
     path: 'reset',
     loadChildren: () => import('./Paginas/reset/reset.module').then( m => m.ResetPageModule)
+  },
+  {
+    path: 'e404',
+    loadChildren: () => import('./Paginas/e404/e404.module').then( m => m.E404PageModule)
+  },
+  {
+    path: 'act-1',
+    loadChildren: () => import('./Paginas/act-1/act-1.module').then( m => m.Act1PageModule)
   },
 ];
 

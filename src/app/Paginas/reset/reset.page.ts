@@ -12,6 +12,8 @@ export class ResetPage {
   contrasena: string = '';
   animation: any;
 
+  alertButtons = ['Action'];
+
   constructor(private navCtrl: NavController, private animationController: AnimationController) {}
 
   ngOnInit() {

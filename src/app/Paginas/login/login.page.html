@@ -4,16 +4,16 @@
 
   <ion-item class="login-item">
     <ion-label position="floating">Nombre de usuario</ion-label>
-    <ion-input type="text" [(ngModel)]="usuario"></ion-input>
+    <ion-input type="text" [clearInput]="true" [(ngModel)]="usuario"></ion-input>
   </ion-item>
 
-  <ion-item class="login-item">
+  <ion-item class="login-item password-input">
     <ion-label position="floating">Contraseña</ion-label>
-    <ion-input type="password" [(ngModel)]="contrasena"></ion-input>
+    <ion-input type="password" [clearInput]="true" [(ngModel)]="contrasena"></ion-input>
   </ion-item>
 
-  <ion-button expand="block" (click)="iniciarSesion()">
-      Iniciar sesión
+  <ion-button class="botonlogin" expand="block" fill="clear" (click)="iniciarSesion()">
+    Iniciar sesión
   </ion-button>
 
   <div class="login-links">

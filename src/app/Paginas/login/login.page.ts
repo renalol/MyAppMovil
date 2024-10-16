@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { AnimationController } from '@ionic/angular';
+import { addIcons } from 'ionicons';
+import { eye, lockClosed } from 'ionicons/icons';
 
 
 @Component({
@@ -16,6 +18,7 @@ export class LoginPage {
 
 
   constructor(private router: Router, private alertController: AlertController, private animationController: AnimationController) {}
+  
 
   async iniciarSesion() {
     if (!this.usuario || !this.contrasena) {
@@ -31,6 +34,9 @@ export class LoginPage {
     }
     const storedUser = localStorage.getItem('usuario');
     const storedPassword = localStorage.getItem('contrasena');
+
+    addIcons({ eye, lockClosed });
+    
   }
 
   async navigateToReset() {

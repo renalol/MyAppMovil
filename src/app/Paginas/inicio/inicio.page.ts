@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NavController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-inicio',
@@ -9,7 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class InicioPage implements OnInit {
   usuario: string = '';
 
-  constructor(private route: ActivatedRoute, private router: Router) {}
+  constructor(private route: ActivatedRoute, private router: Router, navCtrl: NavController) {}
 
   ngOnInit() {
     // Intentar obtener el usuario de los parámetros de la URL
@@ -46,5 +48,10 @@ export class InicioPage implements OnInit {
     console.log('Logout button clicked!');
     // Redirigir al login (puedes agregar la lógica de limpiar el almacenamiento si es necesario)
     this.router.navigate(['/login']);
+  }
+  navigateToPage() {
+    // Agrega aquí la lógica para cerrar sesión (e.g., limpiar datos del u
+    // Redirigir al login (puedes agregar la lógica de limpiar el almacenamiento si es necesario)
+    this.router.navigate(['/act-1']);
   }
 }
