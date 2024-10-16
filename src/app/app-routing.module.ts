@@ -9,23 +9,23 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    loadChildren: () => import('./Paginas/login/login.module').then( m => m.LoginPageModule)
+    loadChildren: () => import('./Paginas/Capa_Logica/login.module').then( m => m.LoginPageModule)
   },
   {
     path: 'inicio',
-    loadChildren: () => import('./Paginas/inicio/inicio.module').then( m => m.InicioPageModule)
+    loadChildren: () => import('./Paginas/Capa_Logica/inicio.module').then( m => m.InicioPageModule)
   },
   {
     path: 'reset',
-    loadChildren: () => import('./Paginas/reset/reset.module').then( m => m.ResetPageModule)
+    loadChildren: () => import('./Paginas/Capa_Logica/reset.module').then( m => m.ResetPageModule)
   },
   {
     path: 'e404',
-    loadChildren: () => import('./Paginas/e404/e404.module').then( m => m.E404PageModule)
+    loadChildren: () => import('./Paginas/Capa_Logica/e404.module').then( m => m.E404PageModule)
   },
   {
     path: 'act-1',
-    loadChildren: () => import('./Paginas/act-1/act-1.module').then( m => m.Act1PageModule)
+    loadChildren: () => import('./Paginas/Capa_Logica/act-1.module').then( m => m.Act1PageModule)
   },
 ];
 
