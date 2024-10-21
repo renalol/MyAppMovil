@@ -4,28 +4,44 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'registro',
     pathMatch: 'full'
   },
   {
     path: 'login',
-    loadChildren: () => import('./Paginas/Capa_Logica/login.module').then( m => m.LoginPageModule)
+    loadChildren: () => import('./Paginas/login/login.module').then( m => m.LoginPageModule)
   },
   {
     path: 'inicio',
-    loadChildren: () => import('./Paginas/Capa_Logica/inicio.module').then( m => m.InicioPageModule)
+    loadChildren: () => import('./Paginas/inicio/inicio.module').then( m => m.InicioPageModule)
   },
   {
     path: 'reset',
-    loadChildren: () => import('./Paginas/Capa_Logica/reset.module').then( m => m.ResetPageModule)
+    loadChildren: () => import('./Paginas/reset/reset.module').then( m => m.ResetPageModule)
   },
   {
     path: 'e404',
-    loadChildren: () => import('./Paginas/Capa_Logica/e404.module').then( m => m.E404PageModule)
+    loadChildren: () => import('./Paginas/e404/e404.module').then( m => m.E404PageModule)
   },
   {
     path: 'act-1',
-    loadChildren: () => import('./Paginas/Capa_Logica/act-1.module').then( m => m.Act1PageModule)
+    loadChildren: () => import('./Paginas/actividad-uno/act-1.module').then( m => m.Act1PageModule)
+  },
+  {
+    path: 'actividad-dos',
+    loadChildren: () => import('./Paginas/actividad-dos/actividad-dos.module').then( m => m.ActividadDosPageModule)
+  },
+  {
+    path: 'perfil',
+    loadChildren: () => import('./Paginas/perfil/perfil.module').then( m => m.PerfilPageModule)
+  },
+  {
+    path: 'calendario',
+    loadChildren: () => import('./Paginas/calendario/calendario.module').then( m => m.CalendarioPageModule)
+  },
+  {
+    path: 'registro',
+    loadChildren: () => import('./Paginas/registro/registro.module').then( m => m.RegistroPageModule)
   },
 ];
 

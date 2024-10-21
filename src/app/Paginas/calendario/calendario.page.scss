@@ -1,21 +1,31 @@
-ion-toolbar{
+ion-toolbar {
   --ion-toolbar-background: rgb(75, 51, 169);
   --ion-title-color: white;
 
 }
-ion-content{  
+
+ion-content {
   --ion-background-color: #faf9f8;
 }
-ion-card{
+
+ion-card {
   --ion-background-color: #000000;
 }
+
 .welcome-section {
   padding: 16px;
   color: rgb(0, 0, 0);
 }
+
 .food-placeholder {
   height: 100px;
   background-color: #ffffff;
   border-radius: 8px 8px 0 0;
 
+}
+
+ion-datetime {
+  color: rgb(0, 0, 0);
+  --background: #ffffff;
+  display: center;
 }

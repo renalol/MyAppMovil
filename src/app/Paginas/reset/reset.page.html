@@ -1,4 +1,5 @@
 <ion-content class="content-reset">
+  <img src="assets/imgs/logo-hrztl.jpeg" alt="Class Minder" class="login-logo" />
   <h2 class="reset-title" style="font-weight: bold">
     Restablecer credenciales
   </h2>
@@ -13,9 +14,11 @@
     <ion-input type="password" [(ngModel)]="contrasena"></ion-input>
   </ion-item>
 
-  <ion-button class="boton-reset" expand="block" (click)="resetCredentials()"
-    >Restablecer</ion-button
-  >
+  <ion-button class="boton-reset" expand="block" fill="clear" (click)="resetCredentials()"
+    >Restablecer</ion-button>
+
+    <ion-button class="boton-reset" expand="block" fill="clear" routerLink="/">Volver a la página principal</ion-button>
+
 </ion-content>
 <ion-footer>
   <ion-toolbar class="footer">

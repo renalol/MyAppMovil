@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Mi Primera App Ionic
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label>Hola, mundo!</ion-label>
+  </ion-item>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-tabs>
+      <ion-tab-bar slot="bottom">
+        <ion-tab-button>
+          <ion-icon name="home-outline" (click)="navigateToInicio()" ></ion-icon>
+        </ion-tab-button>
+        <ion-tab-button>
+          <ion-icon name="person-outline" (click)="navigateToPerfil()"></ion-icon>
+        </ion-tab-button>
+        <ion-tab-button>
+          <ion-icon name="log-out-outline" (click)="logout()"></ion-icon>
+        </ion-tab-button>
+      </ion-tab-bar>
+    </ion-tabs>
+  </ion-toolbar>
+</ion-footer>

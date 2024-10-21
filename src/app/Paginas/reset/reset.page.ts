@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { AnimationController } from '@ionic/angular'; // Asegúrate de importar AnimationController
+import { DbService } from '../../services/db.service'; 
 
 @Component({
   selector: 'app-reset',
@@ -11,10 +12,10 @@ export class ResetPage {
   usuario: string = '';
   contrasena: string = '';
   animation: any;
-
   alertButtons = ['Action'];
 
-  constructor(private navCtrl: NavController, private animationController: AnimationController) {}
+  constructor(private navCtrl: NavController, private animationController: AnimationController, private dbService: DbService ) {}
+
 
   ngOnInit() {
     // Ejecutar la animación cuando la vista esté cargada

@@ -2,11 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
 
-
 @Component({
   selector: 'app-inicio',
   templateUrl: './inicio.page.html',
-  styleUrls: ['./inicio.page.scss']
+  styleUrls: ['./inicio.page.scss'],
 })
 export class InicioPage implements OnInit {
   usuario: string = '';
@@ -19,6 +18,8 @@ export class InicioPage implements OnInit {
       const usuario = params['usuario'];
       if (usuario) {
         this.usuario = usuario;
+        // Almacenar el usuario en localStorage para futuras visitas
+        localStorage.setItem('usuario', JSON.stringify(usuario));
       } else {
         // Si no hay parámetro en la URL, intentar cargar desde localStorage
         this.loadUsuarioFromStorage();
@@ -31,27 +32,37 @@ export class InicioPage implements OnInit {
     this.loadUsuarioFromStorage();
   }
 
-  // Función para cargar el usuario desde el localStorage
   loadUsuarioFromStorage() {
     const storedUsuario = localStorage.getItem('usuario');
     if (storedUsuario) {
-      this.usuario = storedUsuario;
+      // Parsear el valor almacenado como JSON (si se utilizó JSON.stringify)
+      this.usuario = JSON.parse(storedUsuario);
     } else {
       console.error('No se encontró el usuario en el localStorage.');
       this.usuario = 'Invitado'; // Valor por defecto si no hay usuario
     }
   }
 
-  // Función para manejar el cierre de sesión
   logout() {
-    // Agrega aquí la lógica para cerrar sesión (e.g., limpiar datos del usuario y redirigir al login)
-    console.log('Logout button clicked!');
-    // Redirigir al login (puedes agregar la lógica de limpiar el almacenamiento si es necesario)
+    // Eliminar el usuario del localStorage
+    localStorage.removeItem('usuario');
+    this.usuario = '';
     this.router.navigate(['/login']);
   }
+
   navigateToPage() {
-    // Agrega aquí la lógica para cerrar sesión (e.g., limpiar datos del u
-    // Redirigir al login (puedes agregar la lógica de limpiar el almacenamiento si es necesario)
     this.router.navigate(['/act-1']);
+  }
+
+  navigateToPage2() {
+    this.router.navigate(['/actividad-dos']);
+  }
+
+  navigateToCalendar() {
+    this.router.navigate(['/calendario']);
+  }
+
+  navigateToPerfil() {
+    this.router.navigate(['/perfil']);
   }
 }

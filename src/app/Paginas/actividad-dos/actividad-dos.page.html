@@ -1,0 +1,31 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>actividad-dos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">actividad-dos</ion-title>
+    </ion-toolbar>
+  </ion-header>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-tabs>
+      <ion-tab-bar slot="bottom">
+        <ion-tab-button>
+          <ion-icon name="home-outline" (click)="navigateToInicio()" ></ion-icon>
+        </ion-tab-button>
+        <ion-tab-button>
+          <ion-icon name="person-outline" (click)="navigateToPerfil()"></ion-icon>
+        </ion-tab-button>
+        <ion-tab-button>
+          <ion-icon name="log-out-outline" (click)="logout()"></ion-icon>
+        </ion-tab-button>
+      </ion-tab-bar>
+    </ion-tabs>
+  </ion-toolbar>
+</ion-footer>

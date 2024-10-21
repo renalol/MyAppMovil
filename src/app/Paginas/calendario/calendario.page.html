@@ -1,0 +1,28 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>calendario</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-datetime value="2022-04-21T00:00:00" min="2022-03-01T00:00:00" max="2022-05-31T23:59:59"></ion-datetime>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-tabs>
+      <ion-tab-bar slot="bottom">
+        <ion-tab-button>
+          <ion-icon name="home-outline" (click)="navigateToInicio()" ></ion-icon>
+        </ion-tab-button>
+        <ion-tab-button>
+          <ion-icon name="person-outline" (click)="navigateToPerfil()"></ion-icon>
+        </ion-tab-button>
+        <ion-tab-button>
+          <ion-icon name="log-out-outline" (click)="logout()"></ion-icon>
+        </ion-tab-button>
+      </ion-tab-bar>
+    </ion-tabs>
+  </ion-toolbar>
+</ion-footer>

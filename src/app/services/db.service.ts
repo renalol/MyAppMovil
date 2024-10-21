@@ -1,52 +1,41 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
-import { SQLite, SQLiteObject } from '@awesome-cordova-plugins/sqlite/ngx';
-import { Platform } from '@ionic/angular';
 import { Storage } from '@ionic/storage-angular';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-
 export class DbService {
-
-  constructor(private storage: Storage, private router: Router, private platform: Platform, private sqlite: SQLite) { 
-    this.storage.create();
-    this.crearBD()
+  constructor(private storage: Storage) {
+    this.init();
   }
 
-  canActivate(){
-    
-    return true
+  // Inicializa el almacenamiento
+  async init() {
+    await this.storage.create();
   }
 
-  //Almacenar un elemento:
-  public set(key: string, value: any) {
-    this.storage.set(key, value);
+  // Guardar un usuario con su contraseña
+  async saveUserData(usuario: string, contrasena: string) {
+    const users = (await this.storage.get('usuarios')) || {};
+    users[usuario] = contrasena;  // Asigna la contraseña al usuario
+    await this.storage.set('usuarios', users);
   }
 
-  //Obtener un valor:
-  public async get(key: string){
-    return await this.storage.get(key);
+  // Obtener la contraseña del usuario ingresado
+  async getUserPassword(usuario: string): Promise<string | null> {
+    const users = await this.storage.get('usuarios');
+    return users ? users[usuario] || null : null;
   }
 
-  //Eliminar un elemento:
-  public remove(key: string) {
-    this.storage.remove(key);
+  // Validar el inicio de sesión
+  async validateLogin(usuario: string, contrasena: string): Promise<boolean> {
+    const storedPassword = await this.getUserPassword(usuario);
+    return storedPassword === contrasena;
   }
-
-  //Utilizar base de datos SQLite:
-  crearBD(){
-    this.platform.ready().then(() => {
-      this.sqlite.create({
-        name: 'vehiculos',
-        location: 'default'
-      }).then((db: SQLiteObject) => {
-        console.log("Base de datos creada")
-      }).catch(e => {
-        console.log("Base de datos no creada")
-      })
-    })
+  
+  // Limpiar datos almacenados
+  async clearUserData() {
+    await this.storage.remove('usuario');
+    await this.storage.remove('contrasena');
   }
-
 }
