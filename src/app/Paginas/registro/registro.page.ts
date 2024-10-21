@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { DbService } from '../../services/db.service'; // Replace with actual import path
 import { AlertController } from '@ionic/angular';
+import { AnimationController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-registro', // Corrected selector 'app-registro'
@@ -11,11 +13,14 @@ import { AlertController } from '@ionic/angular';
 export class RegistroPage {
   nuevoUsuario: string = '';
   nuevaContrasena: string = '';
+  animation: any; // Declarar la propiedad animation
+
 
   constructor(
     private dbService: DbService,
     private router: Router,
-    private alertController: AlertController
+    private alertController: AlertController,
+    private animationController: AnimationController
   ) {}
 
   async registrarUsuario() { // Corrected method name 'registrarUsuario'
@@ -39,6 +44,23 @@ export class RegistroPage {
 
       // Redirige al login
       this.router.navigate(['/login']);
+    }
+  }
+
+  ngAfterViewInit() {
+    this.animacionTexto();
+  }
+  animacionTexto() {
+    const texto = document.getElementById('tPrincipal') as HTMLElement;
+
+    if (texto) {
+      this.animation = this.animationController.create()
+        .addElement(texto)
+        .duration(5000)
+        .iterations(Infinity)
+        .fromTo('transform', 'translateX(-250px)', 'translateX(400px)');
+
+      this.animation.play();
     }
   }
 }

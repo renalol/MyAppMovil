@@ -1,41 +1,38 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { Platform } from '@ionic/angular';
 import { Storage } from '@ionic/storage-angular';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
+
 export class DbService {
-  constructor(private storage: Storage) {
-    this.init();
-  }
+  private _storage: Storage | null = null;
 
-  // Inicializa el almacenamiento
-  async init() {
-    await this.storage.create();
-  }
+  constructor(private storage: Storage, private router: Router, private platform: Platform, ) { 
+    this.init();
+  }
 
-  // Guardar un usuario con su contraseña
-  async saveUserData(usuario: string, contrasena: string) {
-    const users = (await this.storage.get('usuarios')) || {};
-    users[usuario] = contrasena;  // Asigna la contraseña al usuario
-    await this.storage.set('usuarios', users);
-  }
+  // Inicializa el storage
+  async init() {
+    const storage = await this.storage.create();
+    this._storage = storage;
+  }
 
-  // Obtener la contraseña del usuario ingresado
-  async getUserPassword(usuario: string): Promise<string | null> {
-    const users = await this.storage.get('usuarios');
-    return users ? users[usuario] || null : null;
-  }
+  // Guardar usuario y contraseña
+  public async setUserData(usuario: string, contrasena: string) {
+    await this._storage?.set('usuario', usuario);
+    await this._storage?.set('contrasena', contrasena);
+  }
 
-  // Validar el inicio de sesión
-  async validateLogin(usuario: string, contrasena: string): Promise<boolean> {
-    const storedPassword = await this.getUserPassword(usuario);
-    return storedPassword === contrasena;
-  }
-  
-  // Limpiar datos almacenados
-  async clearUserData() {
-    await this.storage.remove('usuario');
-    await this.storage.remove('contrasena');
-  }
+  // Obtener usuario
+  public async getUsuario(): Promise<string> {
+    return await this._storage?.get('usuario');
+  }
+
+  // Obtener contraseña
+  public async getContrasena(): Promise<string> {
+    return await this._storage?.get('contrasena');
+  }
 }
