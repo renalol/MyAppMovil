@@ -33,8 +33,7 @@ export class RegistroPage {
       await alert.present();
     } else {
       // Guarda los nuevos datos del usuario
-      await this.dbService.saveUserData(this.nuevoUsuario, this.nuevaContrasena); // Assuming this stores username and password
-
+      await this.dbService.setUserData(this.nuevoUsuario, this.nuevaContrasena);
       const alert = await this.alertController.create({
         header: 'Registro exitoso', // More user-friendly message
         message: 'Tu usuario y contraseña se han creado.', // Clarify action

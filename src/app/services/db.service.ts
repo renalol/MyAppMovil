@@ -1,38 +1,31 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
-import { Platform } from '@ionic/angular';
 import { Storage } from '@ionic/storage-angular';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root'
 })
-
 export class DbService {
-  private _storage: Storage | null = null;
+  private _storage: Storage | null = null;
 
-  constructor(private storage: Storage, private router: Router, private platform: Platform, ) { 
-    this.init();
-  }
+  constructor(private storage: Storage) {
+    this.init();
+  }
 
-  // Inicializa el storage
-  async init() {
-    const storage = await this.storage.create();
-    this._storage = storage;
-  }
+  async init() {
+    const storage = await this.storage.create();
+    this._storage = storage;
+  }
 
-  // Guardar usuario y contraseña
-  public async setUserData(usuario: string, contrasena: string) {
-    await this._storage?.set('usuario', usuario);
-    await this._storage?.set('contrasena', contrasena);
-  }
+  async setUserData(usuario: string, contrasena: string) {
+    await this._storage?.set('usuario', usuario);
+    await this._storage?.set('contrasena', contrasena);
+  }
 
-  // Obtener usuario
-  public async getUsuario(): Promise<string> {
-    return await this._storage?.get('usuario');
-  }
+  async validateLogin(usuario: string, contrasena: string): Promise<boolean> {
+    const storedUser = await this._storage?.get('usuario');
+    const storedPassword = await this._storage?.get('contrasena');
 
-  // Obtener contraseña
-  public async getContrasena(): Promise<string> {
-    return await this._storage?.get('contrasena');
-  }
+    // Comparación exacta, sin espacios en blanco adicionales
+    return storedUser === usuario && storedPassword === contrasena;
+  }
 }
